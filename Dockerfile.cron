@@ -49,10 +49,14 @@ COPY . .
 RUN chmod +x /app/scripts/cleanup-cron.sh && \
     chmod +x /app/scripts/docker-entrypoint.sh
 
+# 创建日志目录
+RUN mkdir -p /var/log && touch /var/log/cleanup.log
+
 # 设置 cron job（每6小时执行一次）
 # 可以通过环境变量 CLEANUP_SCHEDULE 自定义
-RUN echo "0 */6 * * * /app/scripts/cleanup-cron.sh >> /var/log/cleanup.log 2>&1" > /etc/crontabs/root
-
+RUN echo "0 */6 * * * /app/scripts/cleanup-cron.sh >> /var/log/cleanup.log 2>&1" > /etc/crontabs/root && \
+    chmod 0644 /etc/crontabs/root && \
+    cat /etc/crontabs/root
 # 暴露端口
 EXPOSE 8084
 
