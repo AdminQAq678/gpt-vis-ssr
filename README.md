@@ -6,6 +6,10 @@
 
 > 参考2：https://github.com/antvis/mcp-server-chart
 
+纯Dockerfile方式启动
+docker build -t gpt_vis_ssr:v1 .
+docker run -d --name gpt-vis-ssr -p 0.0.0.0:8084:8084  gpt_vis_ssr:v1
+
 # 安装
 
 docker-compose.yml
