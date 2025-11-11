@@ -11,4 +11,8 @@ services:
     environment:
       - NODE_ENV=production
       - TZ=Asia/Shanghai
+      # 图片清理配置
+      - CLEANUP_ENABLED=true              # 是否启用自动清理（true/false）
+      - CLEANUP_SCHEDULE=0 */6 * * *      # Cron表达式：每6小时执行一次
+      - MAX_IMAGE_AGE_HOURS=720            # 保留时长（小时）：超过24小时的图片将被删除
     restart: unless-stopped

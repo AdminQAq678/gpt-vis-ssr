@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Documentation
+*.md
+!README.md
+CLEANUP_README.md
+QUICKSTART.md
+
+# Images
+images/
+public/images/*
+
+# Logs
+logs/
+*.log
+
+# Test files
+scripts/test-cleanup.sh
+
+# Docker files
+docker-compose*.yml
+Dockerfile.cron
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Example files
+example.png
+

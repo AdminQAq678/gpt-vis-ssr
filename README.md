@@ -75,3 +75,41 @@ docker-compose up -d
 
 - 结果图示例
 ![](./example.png)
+
+# 图片自动清理功能
+
+为了防止图片文件积累过多占用磁盘空间，本项目已集成自动清理功能。
+
+## 快速配置
+
+在 `docker-compose.yml` 中配置环境变量：
+
+```yaml
+environment:
+  - CLEANUP_ENABLED=true              # 启用自动清理
+  - CLEANUP_SCHEDULE=0 */6 * * *      # 每6小时执行一次
+  - MAX_IMAGE_AGE_HOURS=24            # 保留24小时内的图片
+```
+
+## 特性
+
+✅ 自动定时清理旧图片  
+✅ 可自定义清理周期和保留时长  
+✅ 提供手动清理接口：`POST /cleanup`  
+✅ 提供统计查询接口：`GET /stats`  
+✅ 启动时自动执行一次清理  
+
+## 详细文档
+
+- [快速开始指南](./QUICKSTART.md) - 快速上手
+- [完整功能文档](./CLEANUP_README.md) - 详细配置和故障排查
+
+## 示例
+
+```bash
+# 查看统计
+curl http://localhost:8084/stats
+
+# 手动触发清理
+curl -X POST http://localhost:8084/cleanup
+```
