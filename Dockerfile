@@ -1,6 +1,5 @@
 # 使用 Node.js 官方镜像作为基础镜像
-FROM node:18-alpine
-
+FROM registry.cn-hangzhou.aliyuncs.com/node/node:18-alpine
 # 安装构建依赖、字体支持和 crond
 RUN apk add --no-cache \
     python3 \
